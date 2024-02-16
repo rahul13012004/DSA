@@ -1,0 +1,39 @@
+CODE: 
+
+class Solution {
+public:
+    int findLeastNumOfUniqueInts(vector<int>& arr, int k) {
+        
+        map<int,int>mp;
+    priority_queue <int, vector<int>, greater<int> > pq; 
+        for(int i=0;i<arr.size();i++)
+        {
+            mp[arr[i]]++;
+        }
+
+        for(auto it: mp)
+        {
+            pq.push(it.second);
+        }
+
+        while(k>0)
+        {
+            if(pq.top()<=k)
+            {
+                k=k-pq.top();
+            }
+
+            else 
+            {
+                k=0;
+                pq.push(pq.top()); // push any random number 
+            }
+            pq.pop();
+        }
+
+
+    return pq.size();
+    }
+};
+
+DESCRIPTION: using a priority queue to access the least occurences of the element and removing exactly k elements in the vector

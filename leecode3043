@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int longestCommonPrefix(vector<int>& arr1, vector<int>& arr2) {
+        set<string>st;
+        for(int i=0;i<arr1.size();i++)
+        {
+            string str=to_string(arr1[i]);
+            string temp="";
+// if arri[i] contains '9690' then the set contains '9','96','969','9690' 
+            for(auto it:str)
+            {
+                temp+=it;
+                st.insert(temp);
+            }
+        }
+        int ans=0;
+        for(int i=0;i<arr2.size();i++)
+        {
+            string str=to_string(arr2[i]);
+            string temp="";
+// checking if the  prefix of arr2[i] matches with the prefixes which are in the set 
+// if matches printing the maximum 
+            for(auto it:str)
+            {
+                temp+=it;
+                if(st.count(temp))
+                {
+                    ans=max(ans,(int)temp.size());
+                }
+            }
+        }
+        return ans;
+        
+    }
+};

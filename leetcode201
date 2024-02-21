@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int rangeBitwiseAnd(int left, int right) {
+        int count=0;
+        while(left!=right)
+        {
+            left>>=1;
+            right>>=1;
+            count++;
+        }
+        return left<<count;
+
+
+        // left and right are scanned from thr MSB 
+        // left and right are left shifted until both left and right are equal 
+        // the equal part of the left and right is copied to the answer and right shifted with count no of bits 
+        // eg 16 and 19 
+
+        
+    }
+};

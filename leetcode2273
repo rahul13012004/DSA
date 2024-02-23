@@ -1,0 +1,50 @@
+class Solution {
+public:
+    bool isAnargram(string str,string str1)
+    {
+        vector<char>vec(26);
+        vector<char>vec1(26);
+        for( char ch:str)
+        {
+            vec[ch-'a']++;
+
+        }
+
+        for( char ch:str1)
+        {
+            vec1[ch-'a']++;
+
+        }
+
+        for(int i=0;i<26;i++)
+        {
+            if(vec[i]!=vec1[i])
+            {
+                return false;
+            }
+        }
+        return true;
+        
+
+    }
+    vector<string> removeAnagrams(vector<string>& words) {
+        vector<string>ans;
+        ans.push_back(words[0]);
+        for(int i=1;i<words.size();i++)
+        {
+            if(isAnargram(words[i],words[i-1]))
+            {
+                continue;
+                
+            }
+            else 
+            {
+                ans.push_back(words[i]);
+            }
+            
+        }
+        return ans;
+        
+        
+    }
+};

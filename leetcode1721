@@ -13,7 +13,7 @@ public:
     ListNode* swapNodes(ListNode* head, int k) {
          ListNode* curr=head;
          int count=0;
-         while(curr!=NULL)
+         while(curr!=NULL) // counting the no of nodes 
          {
              count++;
              curr=curr->next;
@@ -24,22 +24,22 @@ public:
          while(temp!=NULL)
          {
              flag++;
-             if(flag==k)
+             if(flag==k) // for kth node from beginning 
              {
                  start=temp;
              }
-             if(flag==n)
+             if(flag==n) // for kth node fron end 
              {
                  end=temp;
              }
 
-             if(start!=NULL && end!=NULL)
+             if(start!=NULL && end!=NULL) // if nodes are found break the loop 
              {
                  break;
              }
              temp=temp->next;
          }
-         swap(start->val,end->val);
+         swap(start->val,end->val); // swapping the kth from beginning and kth node from end 
          return head;
         
     }

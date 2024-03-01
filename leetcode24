@@ -1,0 +1,32 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+    
+        int count=0;
+        ListNode * prev=NULL,*temp=NULL,*curr=head;
+        // reversing the adjacent nodes 
+        while(curr!=NULL && count<2)
+        {
+            temp=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=temp;
+              count++;
+        } 
+        if(temp!=NULL)
+        head->next=swapPairs(temp); // the first adjacent nodes should be lined to the head of the recursed function 
+
+return prev;
+        
+    }
+};
